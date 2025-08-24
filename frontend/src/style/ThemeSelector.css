@@ -1,0 +1,55 @@
+.theme-selector {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 320px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-selector h2 {
+  margin-bottom: 15px;
+}
+
+.option {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.option label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select,
+input[type="color"],
+input[type="number"] {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.apply-btn {
+  margin-top: 15px;
+  background: #4f46e5;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background: #4338ca;
+}
+
+/* Light/Dark Theme Styles */
+body[data-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #ffffff;
+}

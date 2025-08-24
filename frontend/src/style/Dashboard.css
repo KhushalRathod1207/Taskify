@@ -1,0 +1,31 @@
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Main Content */
+.dashboard-main {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 220px;
+    /* same as sidebar width */
+    transition: margin-left 0.3s ease;
+}
+
+/* When sidebar collapses (auto resize) */
+@media (max-width: 992px) {
+    .dashboard-main {
+        margin-left: 80px;
+        /* match smaller sidebar */
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-main {
+        margin-left: 60px;
+        /* match mobile sidebar */
+        padding: 15px;
+    }
+}
