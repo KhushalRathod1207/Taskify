@@ -177,10 +177,10 @@ export default function SettingsPage() {
                             href="mailto:support@example.com"
                             className="text-primary"
                         >
-                            support@example.com
+                            khushalr010@gmail.com
                         </a>
                     </p>
-                    <p className="mb-0">📞 Call us: +1 (123) 456-7890</p>
+                    <p className="mb-0">📞 Call us: +91 8200567118</p>
                 </div>
 
                 {/* Save Button */}
