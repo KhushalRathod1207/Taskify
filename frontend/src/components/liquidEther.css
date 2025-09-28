@@ -1,0 +1,173 @@
+/* container */
+.liquid-ether {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    /* behind everything */
+    pointer-events: none;
+    /* allow clicks through */
+    overflow: hidden;
+    background: radial-gradient(circle at 10% 20%, #020617 0%, #0b1020 30%, #0b1020 100%);
+}
+
+/* invisible SVG (keeps filter in DOM) */
+.liquid-ether__svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* blobs wrapper (applies goo filter) */
+.liquid-ether__blobs {
+    position: absolute;
+    inset: -20%;
+    /* allow big blobs to flow off-screen */
+    will-change: transform;
+}
+
+/* base blob style */
+.blob {
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    opacity: 0.9;
+    filter: blur(26px);
+    transform: translate3d(0, 0, 0);
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+
+/* individual blob colors & starting positions */
+.b1 {
+    left: -15%;
+    top: 10%;
+    background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.95), rgba(6, 182, 212, 0.85) 60%);
+    animation: move1 22s linear infinite;
+}
+
+.b2 {
+    left: 35%;
+    top: -20%;
+    background: radial-gradient(circle at 70% 70%, rgba(167, 139, 250, 0.92), rgba(59, 130, 246, 0.9) 60%);
+    animation: move2 28s linear infinite;
+}
+
+.b3 {
+    left: 20%;
+    top: 40%;
+    background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.92), rgba(124, 58, 237, 0.9) 60%);
+    animation: move3 25s linear infinite;
+}
+
+/* overlay for subtle hue shifts */
+.liquid-ether__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    background: linear-gradient(120deg, rgba(167, 139, 250, 0.06), rgba(6, 182, 212, 0.04));
+    animation: hueShift 14s linear infinite;
+    will-change: filter;
+}
+
+/* Movement keyframes (smooth, looping) */
+@keyframes move1 {
+    0% {
+        transform: translate(-20%, -10%) scale(1);
+    }
+
+    25% {
+        transform: translate(10%, 5%) scale(1.12);
+    }
+
+    50% {
+        transform: translate(30%, -20%) scale(0.92);
+    }
+
+    75% {
+        transform: translate(-10%, 20%) scale(1.06);
+    }
+
+    100% {
+        transform: translate(-20%, -10%) scale(1);
+    }
+}
+
+@keyframes move2 {
+    0% {
+        transform: translate(30%, -30%) scale(1);
+    }
+
+    25% {
+        transform: translate(-5%, 10%) scale(1.14);
+    }
+
+    50% {
+        transform: translate(-30%, 20%) scale(0.9);
+    }
+
+    75% {
+        transform: translate(15%, -10%) scale(1.08);
+    }
+
+    100% {
+        transform: translate(30%, -30%) scale(1);
+    }
+}
+
+@keyframes move3 {
+    0% {
+        transform: translate(-10%, 40%) scale(1);
+    }
+
+    25% {
+        transform: translate(20%, -15%) scale(1.13);
+    }
+
+    50% {
+        transform: translate(-25%, -10%) scale(0.94);
+    }
+
+    75% {
+        transform: translate(5%, 25%) scale(1.05);
+    }
+
+    100% {
+        transform: translate(-10%, 40%) scale(1);
+    }
+}
+
+/* slow hue rotate on overlay */
+@keyframes hueShift {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(55deg);
+    }
+
+    100% {
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* performance / smaller screens adjustments */
+@media (max-width: 600px) {
+    .blob {
+        width: 120vmax;
+        height: 120vmax;
+        filter: blur(40px);
+    }
+
+    .b1,
+    .b2,
+    .b3 {
+        animation-duration: 30s;
+    }
+
+    .liquid-ether__overlay {
+        opacity: 0.9;
+    }
+}

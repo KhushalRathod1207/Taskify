@@ -30,28 +30,30 @@ export default function SettingsPage() {
             const parsed = JSON.parse(saved);
             setSettings(parsed);
 
-            // Sync with ThemeContext
-            setTheme(parsed.theme || defaultSettings.theme);
-            setFontSize(parsed.fontSize || defaultSettings.fontSize);
-        } else {
-            setTheme(defaultSettings.theme);
-            setFontSize(defaultSettings.fontSize);
+            // Only sync with ThemeContext if saved theme exists
+            if (parsed.theme) setTheme(parsed.theme);
+            if (parsed.fontSize) setFontSize(parsed.fontSize);
         }
-
-        const savedTasks = localStorage.getItem("tasks");
-        if (savedTasks) {
-            setTasks(JSON.parse(savedTasks));
-        }
+        // Do NOT setTheme(defaultSettings.theme) here
     }, [setTheme, setFontSize]);
+
+
 
     // Update local settings + context
     const handleChange = (key, value) => {
         const newSettings = { ...settings, [key]: value };
         setSettings(newSettings);
 
-        if (key === "theme") setTheme(value);
-        if (key === "fontSize") setFontSize(value);
+        if (key === "theme") {
+            setTheme(value);
+            localStorage.setItem("theme", value); // persist
+        }
+        if (key === "fontSize") {
+            setFontSize(value);
+            localStorage.setItem("fontSize", value); // persist
+        }
     };
+
 
     const handleSave = () => {
         localStorage.setItem("settings", JSON.stringify(settings));

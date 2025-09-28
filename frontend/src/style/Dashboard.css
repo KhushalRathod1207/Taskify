@@ -1,4 +1,45 @@
-/* Dashboard Layout */
+/* ==========================
+   THEME VARIABLES
+========================== */
+
+/* Light theme */
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --card-bg: #f5f5f5;
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --card-bg: #2a2a2a;
+}
+
+/* Apply globally */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+.card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar,
+.dashboard-main {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+
+/* ==========================
+   DASHBOARD LAYOUT
+========================== */
 .dashboard {
     display: flex;
     background: #f8f9fa;
