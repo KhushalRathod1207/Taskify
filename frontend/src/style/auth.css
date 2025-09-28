@@ -23,8 +23,7 @@ body {
     background: url("../assets/images/Login_Logo.png") no-repeat center center;
     background-size: cover;
     position: relative;
-    height: 220px;
-    /* visible on mobile */
+    min-height: 300px;
 }
 
 .auth-illustration .overlay {
@@ -40,6 +39,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 1rem;
 }
 
 .auth-illustration h1 {
@@ -163,16 +163,14 @@ body {
 }
 
 /* ====== RESPONSIVE ====== */
+
+/* Large screens (desktop/tablet) */
 @media (min-width: 768px) {
     .auth-container {
         flex-direction: row;
-        /* side by side */
     }
 
     .auth-illustration {
-        flex: 1;
-        height: auto;
-        /* full height */
         display: block;
     }
 
@@ -186,6 +184,35 @@ body {
     }
 }
 
+/* Medium screens (tablets/small desktops) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .auth-illustration {
+        min-height: 400px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 767px) {
+    .auth-container {
+        flex-direction: column;
+    }
+
+    .auth-illustration {
+        display: none;
+    }
+
+    .auth-form-wrapper {
+        flex: 1 1 100%;
+        padding: 2rem 1rem;
+    }
+
+    .auth-form {
+        max-width: 100%;
+        padding: 2rem;
+    }
+}
+
+/* Extra small screens */
 @media (max-width: 480px) {
     .auth-form {
         padding: 1.5rem;
